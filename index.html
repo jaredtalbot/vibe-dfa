@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DFA Builder & Tester</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>DFA Builder & Tester</h1>
+        <p>Create Determinite Finite Automatons and test them with strings</p>
+      </header>
+
+      <div class="main-content">
+        <!-- Left Panel: Canvas for DFA -->
+        <div class="canvas-panel">
+          <div class="toolbar">
+            <button id="addStateBtn" class="tool-btn active" title="Add State">
+              <span>➕ Add State</span>
+            </button>
+            <button
+              id="addTransitionBtn"
+              class="tool-btn"
+              title="Add Transition"
+            >
+              <span>🔗 Add Transition</span>
+            </button>
+            <button id="selectBtn" class="tool-btn" title="Select/Move">
+              <span>👆 Select</span>
+            </button>
+            <button id="deleteBtn" class="tool-btn" title="Delete">
+              <span>🗑️ Delete</span>
+            </button>
+            <button id="clearBtn" class="tool-btn danger" title="Clear All">
+              <span>Clear All</span>
+            </button>
+          </div>
+          <canvas id="dfaCanvas" width="800" height="600"></canvas>
+          <div class="canvas-info">
+            <small
+              >Click to add states | Right-click state for options | Drag to
+              connect transitions</small
+            >
+          </div>
+        </div>
+
+        <!-- Right Panel: Controls and Testing -->
+        <div class="control-panel">
+          <!-- Alphabet Configuration -->
+          <div class="panel-section">
+            <h3>Alphabet</h3>
+            <div class="input-group">
+              <input
+                type="text"
+                id="alphabetInput"
+                placeholder="e.g., 0,1"
+                value="0,1"
+              />
+              <button id="setAlphabetBtn">Set Alphabet</button>
+            </div>
+            <div id="alphabetDisplay" class="info-display">Current: {0, 1}</div>
+          </div>
+
+          <!-- State Configuration -->
+          <div class="panel-section">
+            <h3>Selected State</h3>
+            <div id="stateConfig">
+              <p class="info-text">Click a state to configure</p>
+              <div id="stateOptions" style="display: none">
+                <div class="checkbox-group">
+                  <label>
+                    <input type="checkbox" id="setStartState" />
+                    Start State
+                  </label>
+                  <label>
+                    <input type="checkbox" id="setAcceptState" />
+                    Accept State
+                  </label>
+                </div>
+                <div class="input-group">
+                  <label>State Name:</label>
+                  <input type="text" id="stateNameInput" placeholder="q0" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- String Testing -->
+          <div class="panel-section">
+            <h3>Test String</h3>
+            <div class="input-group">
+              <input
+                type="text"
+                id="testStringInput"
+                placeholder="Enter string to test"
+              />
+              <button id="testStringBtn">Test</button>
+            </div>
+            <div id="testResult" class="result-display"></div>
+            <div id="executionTrace" class="trace-display"></div>
+          </div>
+
+          <!-- Exhaustive Testing -->
+          <div class="panel-section">
+            <h3>Generate All Strings</h3>
+            <div class="input-group">
+              <label for="maxLengthInput">Max Length:</label>
+              <input
+                type="number"
+                id="maxLengthInput"
+                min="0"
+                max="10"
+                value="3"
+              />
+              <button id="generateBtn">Generate</button>
+            </div>
+            <div id="generatedStrings" class="generated-display"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
